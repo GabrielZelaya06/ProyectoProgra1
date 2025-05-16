@@ -11,6 +11,12 @@ package Proyecto_Primer_Parcial;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 public class Zelaya_Gabriel_ProyectoTienda {
+    
+        //static int stockAzucar=0;//kg de azucar en inventario
+        //static int stockAvena=0;//kg de avena en inventario
+        //static int stockTrigo=0;//kg de trigo en inventario
+        //static int stockMaiz=0;//kg de maiz en inventario
+    
     public static void main(String[] args){
         
         Scanner input = new Scanner(System.in);
@@ -24,6 +30,10 @@ public class Zelaya_Gabriel_ProyectoTienda {
         int codigoMaiz=4;//numero de codigo del producto
         int codigoProd=0;//codigo de producto
         int cantProd=0;//cantidad de producto
+        int stockAzucar=0;//kg de azucar en inventario
+        int stockAvena=0;//kg de avena en inventario
+        int stockTrigo=0;//kg de trigo en inventario
+        int stockMaiz=0;//kg de maiz en inventario
         String prodAzucar="Azúcar";//producto azucar
         String prodAvena="Avena";//producto avena
         String prodTrigo="Trigo";//producto trigo
@@ -144,35 +154,56 @@ public class Zelaya_Gabriel_ProyectoTienda {
                 
                 }while(codigoProd<1 || codigoProd>4);
                 
-                
+                               
                 do{
                 System.out.print("Ingrese cantidad de producto(kg): ");
                 cantProd = input.nextInt();
                 
-                if(cantProd<=0){
+                if(cantProd<0){
                    
                     System.out.println("Cantidad invalida");
                 }
                 
-                }while(cantProd<=0);
-                
+                }while(cantProd<0);
+               
+               
                 switch(codigoProd){
                     
                     case 1:
+                        if(cantProd<=stockAzucar){
                         subtotal += cantProd*precioV_azucar;
                         contenidoFactura += prodAzucar+"          "+cantProd+" kg       Lps."+precioV_azucar+"           Lps."+(cantProd*precioV_azucar)+"\n";
+                        stockAzucar -= cantProd;
+                        }else{
+                            System.out.println("No hay suficiente stock");
+                        }
                         break;
                     case 2:
+                        if(cantProd<=stockAvena){
                         subtotal += cantProd*precioV_avena;
                         contenidoFactura += prodAvena+"           "+cantProd+" kg       Lps."+precioV_avena+"           Lps."+(cantProd*precioV_avena)+"\n";
+                        stockAvena -= cantProd;
+                        }else{
+                            System.out.println("No hay suficiente stock");
+                        }
                         break;
                     case 3:
+                        if(cantProd<=stockTrigo){
                         subtotal += cantProd*precioV_trigo;
                         contenidoFactura += prodTrigo+"           "+cantProd+" kg       Lps."+precioV_trigo+"           Lps."+(cantProd*precioV_trigo)+"\n";
+                        stockTrigo -= cantProd;
+                        }else{
+                            System.out.println("No hay suficiente stock");
+                        }
                         break;
                     case 4:
+                        if(cantProd<=stockMaiz){
                         subtotal += cantProd*precioV_maiz;
                         contenidoFactura += prodMaiz+"            "+cantProd+" kg       Lps."+precioV_maiz+"           Lps."+(cantProd*precioV_maiz)+"\n";
+                        stockMaiz -= cantProd;
+                        }else{
+                            System.out.println("No hay suficiente stock");
+                        }
                         break;
                 }
                 
@@ -206,6 +237,8 @@ public class Zelaya_Gabriel_ProyectoTienda {
                 
                 caja_tienda += totalPagar;//Aumenta dinero a la caja
                 
+                
+                if(subtotal>0){
                 System.out.println("");
                 System.out.println("-----------------------------------------------------------");
                 System.out.println("                     FACTURA DE COMPRA                     ");
@@ -222,7 +255,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                 System.out.println("-----------------------------------------------------------");
                 System.out.println("                   GRACIAS POR SU COMPRA                   ");
                 System.out.println("-----------------------------------------------------------");
-                
+                }
 
                 
             }//CLIENTE TIPO A (cierre)
@@ -289,28 +322,43 @@ public class Zelaya_Gabriel_ProyectoTienda {
                     System.out.print("Ingrese cantidad de producto(kg): ");
                     cantProd = input.nextInt();
                 
-                if(cantProd<=0){
+                if(cantProd<0){
                    
                     System.out.println("Cantidad invalida");
                 }
                 
-                }while(cantProd<=0);
+                }while(cantProd<0);
                 
                 
                 
                 switch(codigoProd){
                     
                     case 1:
+                        if(cantProd<=stockAzucar){
                         subtotal += cantProd*precioV_azucar;
                         contenidoFactura += prodAzucar+"          "+cantProd+" kg       Lps."+precioV_azucar+"           Lps."+(cantProd*precioV_azucar)+"\n";
+                        stockAzucar -= cantProd;
+                        }else{
+                            System.out.println("No hay suficiente stock");
+                        }
                         break;
                     case 2:
+                        if(cantProd<=stockAvena){
                         subtotal += cantProd*precioV_avena;
                         contenidoFactura += prodAvena+"           "+cantProd+" kg       Lps."+precioV_avena+"           Lps."+(cantProd*precioV_avena)+"\n";
+                        stockAvena -= cantProd;
+                        }else{
+                            System.out.println("No hay suficiente stock");
+                        }
                         break;
                     case 3:
+                        if(cantProd<=stockTrigo){
                         subtotal += cantProd*precioV_trigo;
                         contenidoFactura += prodTrigo+"           "+cantProd+" kg       Lps."+precioV_trigo+"           Lps."+(cantProd*precioV_trigo)+"\n";
+                        stockTrigo -= cantProd;
+                        }else{
+                            System.out.println("No hay suficiente stock");
+                        }
                         break;
                 }
                 
@@ -430,20 +478,25 @@ public class Zelaya_Gabriel_ProyectoTienda {
                     System.out.print("Ingrese cantidad de producto(kg): ");
                     cantProd = input.nextInt();
                 
-                    if(cantProd<=0){
+                    if(cantProd<0){
                    
                     System.out.println("Cantidad invalida");
                     
                     }
                 
-                }while(cantProd<=0);
+                }while(cantProd<0);
                 
                 
                 switch(codigoProd){
                     
                     case 4:
+                        if(cantProd<=stockMaiz){
                         subtotal += cantProd*precioV_maiz;
                         contenidoFactura += prodMaiz+"            "+cantProd+" kg       Lps."+precioV_maiz+"           Lps."+(cantProd*precioV_maiz)+"\n";
+                        stockMaiz -= cantProd;
+                        }else{
+                            System.out.println("No hay suficiente stock");
+                        }
                         break;
                 }
                 
@@ -508,6 +561,11 @@ public class Zelaya_Gabriel_ProyectoTienda {
             }//IF CAJA ABIERTA
             
         }//IF OPCION 2
+        
+        
+        
+        
+        
         
         
         
@@ -619,6 +677,17 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println("                   GRACIAS POR SU COMPRA                   ");
                         System.out.println("-----------------------------------------------------------");
                         
+                        if(codigoProd==1){
+                            
+                            stockAzucar += cantProd;
+                            System.out.println("Stock actual de Azúcar: "+stockAzucar);
+                            
+                        }else if(codigoProd==4){
+                            
+                            stockMaiz += cantProd;
+                            System.out.println("Stock actual de Maíz: "+stockMaiz);
+                            
+                        }
                     }
                 }   
                     
@@ -712,14 +781,29 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println("                   GRACIAS POR SU COMPRA                   ");
                         System.out.println("-----------------------------------------------------------");
                         
+                        if(codigoProd==2){
+                            
+                            stockAvena += cantProd;
+                            System.out.println("Stock actual de Avena: "+stockAvena);
+                            
+                        }else if(codigoProd==3){
+                            
+                            stockTrigo += cantProd;
+                            System.out.println("Stock actual de Trigo: "+stockTrigo);
+                            
+                        }
+                        
+                      } 
+                        
                     }
-                }   
+
+                       
                     
             }//PROVEEDOR TIPO B (cierre)
             
             
             //PROVEEDOR TIPO C
-            if(tipoProveedor.equalsIgnoreCase("b")){
+            if(tipoProveedor.equalsIgnoreCase("c")){
                 
                     double subtotal=0;
                     String detallesCompra="";
@@ -800,19 +884,47 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println("                   GRACIAS POR SU COMPRA                   ");
                         System.out.println("-----------------------------------------------------------");
                         
+                        stockAvena += cantProd;
+                        System.out.println("Stock actual de Avena: "+stockAvena);
+                        
                     }
+                    
+                    
                 }   
                     
             }//PROVEEDOR TIPO C (cierre)
-            
-            
-            
             
             
             }
                    
                      
         }//IF OPCION 3
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        if(opcion==4){
+            
+            // a. Cantidad actual en caja al momento de cierre
+            
+            // b. Numero de compras y ventas realizadas al dia
+            
+            // c. Volumen total de compras y ventas efectuadas antes del cierre. Mostrando el margen de ganancia obtenido tambien
+            
+            // d. Valor medio de compra y venta (PROMEDIO)
+            
+            
+            
+            
+            
+        }
+        
+        
         
          
         System.out.println("");
@@ -836,8 +948,6 @@ public class Zelaya_Gabriel_ProyectoTienda {
 /*
 
 Hacer que cuando se abra y cierre caja cambie de dia
-No permitir ventas si no hay suficiente stock
-Hacer que se sume el stock por cada compra que yo haga
 No permitir menos de 0 lps en caja
 
 Permitir doubles en cantidad de producto
@@ -851,4 +961,6 @@ Agregar comentarios
 -Que no se realizen ventas si la caja no se ha abierto
 -Que no se imprima factura si no hay compra
 -No permitir la compra si no hay suficiente dinero en caja
+-No permitir ventas si no hay suficiente stock
+-Hacer que sume el stock por cada compra que yo haga
 */
