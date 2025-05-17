@@ -12,11 +12,6 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 public class Zelaya_Gabriel_ProyectoTienda {
     
-        //static int stockAzucar=0;//kg de azucar en inventario
-        //static int stockAvena=0;//kg de avena en inventario
-        //static int stockTrigo=0;//kg de trigo en inventario
-        //static int stockMaiz=0;//kg de maiz en inventario
-    
     public static void main(String[] args){
         
         Scanner input = new Scanner(System.in);
@@ -34,6 +29,8 @@ public class Zelaya_Gabriel_ProyectoTienda {
         int stockAvena=0;//kg de avena en inventario
         int stockTrigo=0;//kg de trigo en inventario
         int stockMaiz=0;//kg de maiz en inventario
+        int contadorVentas=0;//numero de ventas realizadas en el dia
+        int contadorCompras=0;//numero de compra realizadas en el dia
         String prodAzucar="Azúcar";//producto azucar
         String prodAvena="Avena";//producto avena
         String prodTrigo="Trigo";//producto trigo
@@ -45,7 +42,9 @@ public class Zelaya_Gabriel_ProyectoTienda {
         double precioCmp_azucar=25;//precio de compra de azucar
         double precioCmp_avena=0;//precio de compra de avena
         double precioCmp_trigo=30;//precio de compra de trigo 
-        double precioCmp_maiz=18;//precio de compra de maiz      
+        double precioCmp_maiz=18;//precio de compra de maiz 
+        double volumenCompras=0;
+        double volumenVentas=0;
         String otroProd="";//otro producto (para la parte de agregar otro producto)     
         String tipoCliente="";//tipo de cliente
         String tipoProveedor="";//tipo de proveedor
@@ -255,6 +254,9 @@ public class Zelaya_Gabriel_ProyectoTienda {
                 System.out.println("-----------------------------------------------------------");
                 System.out.println("                   GRACIAS POR SU COMPRA                   ");
                 System.out.println("-----------------------------------------------------------");
+                
+                volumenVentas += totalPagar;
+                contadorVentas ++;
                 }
 
                 
@@ -413,6 +415,9 @@ public class Zelaya_Gabriel_ProyectoTienda {
                 System.out.println("-----------------------------------------------------------");
                 System.out.println("                   GRACIAS POR SU COMPRA                   ");
                 System.out.println("-----------------------------------------------------------");
+                
+                volumenVentas += totalPagar;
+                contadorVentas ++;
                 }
                 
             }//CLIENTE TIPO B (cierre)
@@ -552,6 +557,9 @@ public class Zelaya_Gabriel_ProyectoTienda {
                 System.out.println("-----------------------------------------------------------");
                 System.out.println("                   GRACIAS POR SU COMPRA                   ");
                 System.out.println("-----------------------------------------------------------");
+                
+                volumenVentas += totalPagar;
+                contadorVentas ++;
                 }
                
             }//CLIENTE TIPO C (cierre)
@@ -676,6 +684,10 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("                   GRACIAS POR SU COMPRA                   ");
                         System.out.println("-----------------------------------------------------------");
+                        System.out.println("");
+                        
+                        volumenCompras += totalPagar;
+                        contadorCompras ++;
                         
                         if(codigoProd==1){
                             
@@ -780,6 +792,10 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("                   GRACIAS POR SU COMPRA                   ");
                         System.out.println("-----------------------------------------------------------");
+                        System.out.println("");
+                        
+                        volumenCompras += totalPagar;
+                        contadorCompras ++;
                         
                         if(codigoProd==2){
                             
@@ -883,6 +899,10 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("                   GRACIAS POR SU COMPRA                   ");
                         System.out.println("-----------------------------------------------------------");
+                        System.out.println("");
+                        
+                        volumenCompras += totalPagar;
+                        contadorCompras ++;
                         
                         stockAvena += cantProd;
                         System.out.println("Stock actual de Avena: "+stockAvena);
@@ -910,17 +930,49 @@ public class Zelaya_Gabriel_ProyectoTienda {
         
         if(opcion==4){
             
+            double ganancia=volumenVentas - volumenCompras;
+            double perdida=volumenCompras - volumenVentas;
+            
+            if(!cajaAbierta){
+                System.out.println("Opción no válida. Tienes que abrir caja primero.");
+            }else{
+            
+                System.out.println("-----------------REPORTES-----------------");
+                System.out.println("");
             // a. Cantidad actual en caja al momento de cierre
-            
+                System.out.println("* Cantidad actual en caja: "+caja_tienda);
+                System.out.println("");
+                System.out.println("------------------------------------------");
             // b. Numero de compras y ventas realizadas al dia
-            
+                System.out.println("");
+                System.out.println("* Compras realizadas hoy: "+contadorCompras);
+                System.out.println("");
+                System.out.println("* Ventas realizadas hoy: "+contadorVentas);
+                System.out.println("");
+                System.out.println("------------------------------------------");
             // c. Volumen total de compras y ventas efectuadas antes del cierre. Mostrando el margen de ganancia obtenido tambien
-            
+                System.out.println("");
+                System.out.println("* Volumen de compras efectuadas hoy: Lps."+df.format(volumenCompras));
+                System.out.println("");
+                System.out.println("* Volumen de ventas efectuadas hoy: Lps."+df.format(volumenVentas));
+                System.out.println("");
+                
+                if(volumenCompras>volumenVentas){                   
+                    
+                    System.out.println("* No hubo una ganancia el dia de hoy.");
+                    System.out.println("* Se produjo una perdida de: Lps."+df.format(perdida));
+                }else{
+                
+                    System.out.println("* Margen de ganancia obtenido: "+df.format(ganancia));
+                
+                }
+                System.out.println("------------------------------------------");
             // d. Valor medio de compra y venta (PROMEDIO)
+                System.out.println("");
+                
             
             
-            
-            
+            }
             
         }
         
@@ -951,8 +1003,14 @@ Hacer que cuando se abra y cierre caja cambie de dia
 No permitir menos de 0 lps en caja
 
 Permitir doubles en cantidad de producto
+Permitir restar dinero de caja
+Seleccionar reportes aunque no se hayan hecho compras o ventas (Si se puede)
+Hacer mas compras y ventas despues de haber seleccionado reportes (Si se puede)
+Crash de letras donde van numeros
 
 Agregar comentarios
+
+-Opcional: poner xuanto stock queda al lado del menu
 */
 
 
