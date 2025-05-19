@@ -63,7 +63,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
         System.out.println("4. Reportes");
         System.out.println("5. Cierre de Caja");
         System.out.println("6. Salir del Sistema");
-        System.out.print("Elige una opción:");
+        System.out.print("Elige una opción (1-6):");
         
         int opcion = input.nextInt();
        
@@ -160,7 +160,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                             do{
 
                                 System.out.println("");
-                                System.out.print("Ingrese código del producto: ");
+                                System.out.print("Ingrese código del producto (1-4): ");
                                 codigoProd = input.nextInt();
 
                                 if(codigoProd<1 || codigoProd>4){
@@ -313,7 +313,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                             System.out.println("|      4     |     Maíz       |       Lps.20       |");
 
                             System.out.println("");
-                            System.out.print("Ingrese código del producto: ");
+                            System.out.print("Ingrese código del producto (1-4): ");
                             codigoProd = input.nextInt();
 
                             if(codigoProd<1 || codigoProd>4){
@@ -322,7 +322,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
 
                                     System.out.println("Código invalido");
                                     System.out.println("");
-                                    System.out.print("Ingrese código del producto: ");
+                                    System.out.print("Ingrese código del producto (1-4): ");
                                     codigoProd = input.nextInt();
 
                                 }while(codigoProd<1 || codigoProd>4);
@@ -482,7 +482,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                             System.out.println("|      4     |     Maíz       |       Lps.20       |");
 
                             System.out.println("");
-                            System.out.print("Ingrese código del producto: ");
+                            System.out.print("Ingrese código del producto (1-4): ");
                             codigoProd = input.nextInt();  
 
                             if(codigoProd<1 || codigoProd>4){
@@ -491,7 +491,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
 
                                     System.out.println("Código invalido");
                                     System.out.println("");
-                                    System.out.print("Ingrese código del producto: ");
+                                    System.out.print("Ingrese código del producto (1-4): ");
                                     codigoProd = input.nextInt();
 
                                 }while(codigoProd<1 || codigoProd>4);
@@ -656,7 +656,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println("(C)= Precio del proveedor tipo C");
 
                         System.out.println("");
-                        System.out.print("Ingrese código del producto: ");
+                        System.out.print("Ingrese código del producto (1-4): ");
                         codigoProd = input.nextInt();
 
                         if(codigoProd==2 || codigoProd==3){
@@ -771,7 +771,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println("(C)= Precio del proveedor tipo C");
 
                         System.out.println("");
-                        System.out.print("Ingrese código del producto: ");
+                        System.out.print("Ingrese código del producto (1-4): ");
                         codigoProd = input.nextInt();
 
                         if(codigoProd==1 || codigoProd==4){
@@ -882,7 +882,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println("(C)= Precio del proveedor tipo C");
 
                         System.out.println("");
-                        System.out.print("Ingrese código del producto: ");
+                        System.out.print("Ingrese código del producto (1-4): ");
                         codigoProd = input.nextInt();
 
                         if(codigoProd==1 || codigoProd==3 || codigoProd==4){
@@ -1152,35 +1152,3 @@ public class Zelaya_Gabriel_ProyectoTienda {
     }//MAIN
     
 }//PUBLIC CLASS
-
-/*
-
-revisar si deberia de abrir caja mas de una vez
-Crash de letras donde van numeros
-
-Agregar comentarios
-
--Opcional: 
-Poner cuanto stock queda al lado del menu
-Permitir doubles en cantidad de producto
-Permitir restar dinero de caja
-Editar reportes si hay valores 0
-*/
-
-
-/* COMPLETADO:
-
--Que no se realizen ventas si la caja no se ha abierto
--Que no se imprima factura si no hay compra
--No permitir la compra si no hay suficiente dinero en caja
--No permitir ventas si no hay suficiente stock
--Hacer que sume el stock por cada compra que yo haga
--No permitir menos de 0 lps en caja
--Hacer mas compras y ventas despues de haber seleccionado reportes (Si se puede)
--Seleccionar reportes aunque no se hayan hecho compras o ventas (Si se puede)
--Impuestos en compras
--Hacer que cuando se abra y cierre caja cambie de dia
--Que no me pida ingresar dinero a partir del segundo dia
--Si no se vende todo el stock sigue el otro dia = no se resetean
--Si no se vende todo el stock sigue el otro dia = no se resetean
-*/
