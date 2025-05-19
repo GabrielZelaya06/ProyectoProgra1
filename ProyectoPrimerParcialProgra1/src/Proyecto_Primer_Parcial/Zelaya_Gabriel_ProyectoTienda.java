@@ -29,6 +29,10 @@ public class Zelaya_Gabriel_ProyectoTienda {
         int stockAvena=0;//kg de avena en inventario
         int stockTrigo=0;//kg de trigo en inventario
         int stockMaiz=0;//kg de maiz en inventario
+        int cantidadAzucarVendida=0;
+        int cantidadAvenaVendida=0;
+        int cantidadTrigoVendida=0;
+        int cantidadMaizVendida=0;
         int contadorVentas=0;//numero de ventas realizadas en el dia
         int contadorCompras=0;//numero de compra realizadas en el dia
         String prodAzucar="Azúcar";//producto azucar
@@ -45,10 +49,14 @@ public class Zelaya_Gabriel_ProyectoTienda {
         double precioCmp_maiz=18;//precio de compra de maiz 
         double volumenCompras=0;
         double volumenVentas=0;
+        double mayorVenta=0;
+        double mayorCompra=0;
+        double depositoBanco=0;
         String otroProd="";//otro producto (para la parte de agregar otro producto)     
         String tipoCliente="";//tipo de cliente
         String tipoProveedor="";//tipo de proveedor
         boolean cajaAbierta = false;//para verificar si la caja fue abierta
+        boolean cajaCerrada = false;//para verificar si la caja fue cerrada
         
         System.out.println("****BIENVENIDO****");
         System.out.println("Menú:");
@@ -173,6 +181,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         subtotal += cantProd*precioV_azucar;
                         contenidoFactura += prodAzucar+"          "+cantProd+" kg       Lps."+precioV_azucar+"           Lps."+(cantProd*precioV_azucar)+"\n";
                         stockAzucar -= cantProd;
+                        cantidadAzucarVendida += cantProd;
                         }else{
                             System.out.println("No hay suficiente stock");
                         }
@@ -182,6 +191,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         subtotal += cantProd*precioV_avena;
                         contenidoFactura += prodAvena+"           "+cantProd+" kg       Lps."+precioV_avena+"           Lps."+(cantProd*precioV_avena)+"\n";
                         stockAvena -= cantProd;
+                        cantidadAvenaVendida += cantProd;
                         }else{
                             System.out.println("No hay suficiente stock");
                         }
@@ -191,6 +201,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         subtotal += cantProd*precioV_trigo;
                         contenidoFactura += prodTrigo+"           "+cantProd+" kg       Lps."+precioV_trigo+"           Lps."+(cantProd*precioV_trigo)+"\n";
                         stockTrigo -= cantProd;
+                        cantidadTrigoVendida += cantProd;
                         }else{
                             System.out.println("No hay suficiente stock");
                         }
@@ -200,6 +211,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         subtotal += cantProd*precioV_maiz;
                         contenidoFactura += prodMaiz+"            "+cantProd+" kg       Lps."+precioV_maiz+"           Lps."+(cantProd*precioV_maiz)+"\n";
                         stockMaiz -= cantProd;
+                        cantidadMaizVendida += cantProd;
                         }else{
                             System.out.println("No hay suficiente stock");
                         }
@@ -238,25 +250,31 @@ public class Zelaya_Gabriel_ProyectoTienda {
                 
                 
                 if(subtotal>0){
-                System.out.println("");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("                     FACTURA DE COMPRA                     ");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("Producto          Kg    |      P.Unidad      |    Total    ");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println(contenidoFactura);
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
-                System.out.println("Descuento aplicado:                             Lps."+df.format(descuento));
-                System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("                   GRACIAS POR SU COMPRA                   ");
-                System.out.println("-----------------------------------------------------------");
+                    System.out.println("");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("                     FACTURA DE COMPRA                     ");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("Producto          Kg    |      P.Unidad      |    Total    ");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println(contenidoFactura);
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
+                    System.out.println("Descuento aplicado:                             Lps."+df.format(descuento));
+                    System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("                   GRACIAS POR SU COMPRA                   ");
+                    System.out.println("-----------------------------------------------------------");
+
+                    volumenVentas += totalPagar;
+                    contadorVentas ++;
                 
-                volumenVentas += totalPagar;
-                contadorVentas ++;
+                    if(totalPagar > mayorVenta){
+                        
+                        mayorVenta = totalPagar;
+                    }
+                
                 }
 
                 
@@ -340,6 +358,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         subtotal += cantProd*precioV_azucar;
                         contenidoFactura += prodAzucar+"          "+cantProd+" kg       Lps."+precioV_azucar+"           Lps."+(cantProd*precioV_azucar)+"\n";
                         stockAzucar -= cantProd;
+                        cantidadAzucarVendida += cantProd;
                         }else{
                             System.out.println("No hay suficiente stock");
                         }
@@ -349,6 +368,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         subtotal += cantProd*precioV_avena;
                         contenidoFactura += prodAvena+"           "+cantProd+" kg       Lps."+precioV_avena+"           Lps."+(cantProd*precioV_avena)+"\n";
                         stockAvena -= cantProd;
+                        cantidadAvenaVendida += cantProd;
                         }else{
                             System.out.println("No hay suficiente stock");
                         }
@@ -358,6 +378,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         subtotal += cantProd*precioV_trigo;
                         contenidoFactura += prodTrigo+"           "+cantProd+" kg       Lps."+precioV_trigo+"           Lps."+(cantProd*precioV_trigo)+"\n";
                         stockTrigo -= cantProd;
+                        cantidadTrigoVendida += cantProd;
                         }else{
                             System.out.println("No hay suficiente stock");
                         }
@@ -399,25 +420,30 @@ public class Zelaya_Gabriel_ProyectoTienda {
                 caja_tienda += totalPagar;//Aumenta dinero a la caja
                 
                 if(subtotal>0){
-                System.out.println("");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("                     FACTURA DE COMPRA                     ");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("Producto          Kg    |      P.Unidad      |    Total    ");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println(contenidoFactura);
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
-                System.out.println("Descuento aplicado:                             Lps."+df.format(descuento));
-                System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("                   GRACIAS POR SU COMPRA                   ");
-                System.out.println("-----------------------------------------------------------");
-                
-                volumenVentas += totalPagar;
-                contadorVentas ++;
+                    System.out.println("");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("                     FACTURA DE COMPRA                     ");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("Producto          Kg    |      P.Unidad      |    Total    ");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println(contenidoFactura);
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
+                    System.out.println("Descuento aplicado:                             Lps."+df.format(descuento));
+                    System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("                   GRACIAS POR SU COMPRA                   ");
+                    System.out.println("-----------------------------------------------------------");
+
+                    volumenVentas += totalPagar;
+                    contadorVentas ++;
+                    
+                    if(totalPagar > mayorVenta){
+                        
+                        mayorVenta = totalPagar;
+                    }
                 }
                 
             }//CLIENTE TIPO B (cierre)
@@ -499,6 +525,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         subtotal += cantProd*precioV_maiz;
                         contenidoFactura += prodMaiz+"            "+cantProd+" kg       Lps."+precioV_maiz+"           Lps."+(cantProd*precioV_maiz)+"\n";
                         stockMaiz -= cantProd;
+                        cantidadMaizVendida += cantProd;
                         }else{
                             System.out.println("No hay suficiente stock");
                         }
@@ -541,25 +568,30 @@ public class Zelaya_Gabriel_ProyectoTienda {
                 caja_tienda += totalPagar;//Aumenta dinero a la caja
                 
                 if(subtotal>0){
-                System.out.println("");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("                     FACTURA DE COMPRA                     ");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("Producto          Kg    |      P.Unidad      |    Total    ");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println(contenidoFactura);
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
-                System.out.println("Descuento aplicado:                             Lps."+df.format(descuento));
-                System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("                   GRACIAS POR SU COMPRA                   ");
-                System.out.println("-----------------------------------------------------------");
-                
-                volumenVentas += totalPagar;
-                contadorVentas ++;
+                    System.out.println("");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("                     FACTURA DE COMPRA                     ");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("Producto          Kg    |      P.Unidad      |    Total    ");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println(contenidoFactura);
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
+                    System.out.println("Descuento aplicado:                             Lps."+df.format(descuento));
+                    System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("                   GRACIAS POR SU COMPRA                   ");
+                    System.out.println("-----------------------------------------------------------");
+
+                    volumenVentas += totalPagar;
+                    contadorVentas ++;
+                    
+                    if(totalPagar > mayorVenta){
+                        
+                        mayorVenta = totalPagar;
+                    }
                 }
                
             }//CLIENTE TIPO C (cierre)
@@ -658,16 +690,17 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         break;
                     }
                     
-                    
-                    double totalPagar=subtotal;
+                    double impuesto=subtotal*0.07;
+                    double totalPagar=subtotal+impuesto;
                     
                     if(totalPagar>caja_tienda){
                         
                         System.out.println("No se puede pagar compra");
                        
                     }else if(totalPagar<=caja_tienda){
+                    
                         
-                    caja_tienda -= totalPagar;//Resta dinero a la caja
+                        caja_tienda -= totalPagar;//Resta dinero a la caja
                 
                      
                         System.out.println("");
@@ -679,6 +712,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println(detallesCompra);
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
+                        System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
                         System.out.println("-----------------------------------------------------------");
@@ -688,6 +722,11 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         
                         volumenCompras += totalPagar;
                         contadorCompras ++;
+                        
+                        if(totalPagar > mayorCompra){
+                            
+                            mayorCompra = totalPagar;
+                        }
                         
                         if(codigoProd==1){
                             
@@ -766,8 +805,8 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         break;
                     }
                     
-                    
-                    double totalPagar=subtotal;
+                    double impuesto=subtotal*0.07;
+                    double totalPagar=subtotal+impuesto;
                     
                     if(totalPagar>caja_tienda){
                         
@@ -775,7 +814,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                        
                     }else if(totalPagar<=caja_tienda){
                         
-                    caja_tienda -= totalPagar;//Resta dinero a la caja
+                        caja_tienda -= totalPagar;//Resta dinero a la caja
                 
                      
                         System.out.println("");
@@ -787,6 +826,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println(detallesCompra);
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
+                        System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
                         System.out.println("-----------------------------------------------------------");
@@ -873,8 +913,8 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         break;
                     }
                     
-                    
-                    double totalPagar=subtotal;
+                    double impuesto=subtotal*0.07;
+                    double totalPagar=subtotal+impuesto;
                     
                     if(totalPagar>caja_tienda){
                         
@@ -882,7 +922,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                        
                     }else if(totalPagar<=caja_tienda){
                         
-                    caja_tienda -= totalPagar;//Resta dinero a la caja
+                        caja_tienda -= totalPagar;//Resta dinero a la caja
                 
                      
                         System.out.println("");
@@ -894,6 +934,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         System.out.println(detallesCompra);
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
+                        System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
                         System.out.println("-----------------------------------------------------------");
@@ -932,29 +973,37 @@ public class Zelaya_Gabriel_ProyectoTienda {
             
             double ganancia=volumenVentas - volumenCompras;
             double perdida=volumenCompras - volumenVentas;
+            double promedioCompra=volumenCompras/contadorCompras;
+            double promedioVenta=volumenVentas/contadorVentas;
+            String productoEstrella="";
+            int cantidadMasGrande = 0;
             
             if(!cajaAbierta){
                 System.out.println("Opción no válida. Tienes que abrir caja primero.");
             }else{
+                
+                System.out.println("Opción Seleccionada: Reportes");
+                System.out.println("");
+                System.out.println("");
             
                 System.out.println("-----------------REPORTES-----------------");
                 System.out.println("");
             // a. Cantidad actual en caja al momento de cierre
-                System.out.println("* Cantidad actual en caja: "+caja_tienda);
+                System.out.println("* Cantidad actual en caja: Lps."+df.format(caja_tienda));
                 System.out.println("");
                 System.out.println("------------------------------------------");
             // b. Numero de compras y ventas realizadas al dia
                 System.out.println("");
-                System.out.println("* Compras realizadas hoy: "+contadorCompras);
+                System.out.println("* COMPRAS realizadas hoy: "+contadorCompras);
                 System.out.println("");
-                System.out.println("* Ventas realizadas hoy: "+contadorVentas);
+                System.out.println("* VENTAS realizadas hoy: "+contadorVentas);
                 System.out.println("");
                 System.out.println("------------------------------------------");
             // c. Volumen total de compras y ventas efectuadas antes del cierre. Mostrando el margen de ganancia obtenido tambien
                 System.out.println("");
-                System.out.println("* Volumen de compras efectuadas hoy: Lps."+df.format(volumenCompras));
+                System.out.println("* Volumen de COMPRAS efectuadas hoy: Lps."+df.format(volumenCompras));
                 System.out.println("");
-                System.out.println("* Volumen de ventas efectuadas hoy: Lps."+df.format(volumenVentas));
+                System.out.println("* Volumen de VENTAS efectuadas hoy: Lps."+df.format(volumenVentas));
                 System.out.println("");
                 
                 if(volumenCompras>volumenVentas){                   
@@ -963,19 +1012,112 @@ public class Zelaya_Gabriel_ProyectoTienda {
                     System.out.println("* Se produjo una perdida de: Lps."+df.format(perdida));
                 }else{
                 
-                    System.out.println("* Margen de ganancia obtenido: "+df.format(ganancia));
+                    System.out.println("* Margen de ganancia obtenido: Lps."+df.format(ganancia));
                 
                 }
                 System.out.println("------------------------------------------");
             // d. Valor medio de compra y venta (PROMEDIO)
                 System.out.println("");
+                System.out.println("* Valor medio de COMPRA: Lps."+df.format(promedioCompra));
+                System.out.println("");
+                System.out.println("* Valor medio de VENTA: Lps."+df.format(promedioVenta));
+                System.out.println("");
+                System.out.println("------------------------------------------");
+            // e. La venta con mayor ganancia realizada y la compra con más gasto efectuado
+                System.out.println("");
+                System.out.println("* La venta con mayor ganancia realizada: Lps."+df.format(mayorVenta)); 
+                System.out.println("");
+                System.out.println("* La compra con más gasto efectuado: Lps."+df.format(mayorCompra));
+                System.out.println("");
+                System.out.println("------------------------------------------");
+            // f.Producto estrella. Cual fue el producto que mas se vendio en el dia
+                if(cantidadAzucarVendida > cantidadMasGrande){
+                    cantidadMasGrande = cantidadAzucarVendida;
+
+                }
+                if(cantidadAvenaVendida > cantidadMasGrande){
+                    cantidadMasGrande = cantidadAvenaVendida;
+                    
+                }
+                if(cantidadTrigoVendida > cantidadMasGrande){
+                    cantidadMasGrande = cantidadTrigoVendida;
+ 
+                }
+                if(cantidadMaizVendida > cantidadMasGrande){
+                    cantidadMasGrande = cantidadMaizVendida;
+                    
+                }
                 
-            
-            
+                //Verificar posibles empates:
+                
+                if(cantidadAzucarVendida == cantidadMasGrande){
+                    productoEstrella += " Azucar";
+                    
+                }
+                if(cantidadAvenaVendida == cantidadMasGrande){
+                    productoEstrella += " Avena";
+                    
+                }
+                if(cantidadTrigoVendida == cantidadMasGrande){
+                    productoEstrella += " Trigo";
+                    
+                }
+                if(cantidadMaizVendida == cantidadMasGrande){
+                    productoEstrella += " Maiz";
+                }
+                    
+                System.out.println("");
+                System.out.println("* Producto(s) Estrella:"+productoEstrella.trim()+", con "+cantidadMasGrande+" kg vendidos el dia de hoy");
+                System.out.println("");
+                System.out.println("------------------------------------------");
             }
             
-        }
+        }//IF OPCION 4
         
+        
+        
+        
+        
+        
+        
+        
+        
+        if(opcion==5){
+            
+            if(!cajaAbierta){
+                System.out.println("Opción no válida. Tienes que abrir caja primero.");
+            }else{
+                
+                System.out.println("Opción Seleccionada: Cierre de Caja");
+                System.out.println("");
+                System.out.println("Total en caja: Lps."+df.format(caja_tienda));
+                
+                double maxBanco = caja_tienda * 0.6;//maximo que se puede guardar en el banco
+                double deposito = 0;//cantidad que se va a enviar al banco
+                
+                System.out.print("Ingrese cantidad de efectivo que desea depositar en el banco (Max: Lps."+df.format(maxBanco)+"): ");
+                deposito = input.nextDouble();
+                
+                while(deposito > maxBanco){
+                    
+                    System.out.println("Cantidad invalida.");
+                    System.out.println("");
+                    System.out.print("Ingrese cantidad de efectivo que desea depositar en el banco (Max: Lps."+df.format(maxBanco)+"): ");
+                    deposito = input.nextDouble();
+                    
+                }
+                
+                caja_tienda -= deposito;
+                depositoBanco += deposito;
+                
+                System.out.println("");
+                System.out.println("Se han depositado Lps."+deposito+" en el banco");
+                System.out.println("");
+                System.out.println("Dinero restante en caja: Lps."+df.format(caja_tienda));
+            }
+            
+            
+        }
         
         
          
@@ -1000,17 +1142,17 @@ public class Zelaya_Gabriel_ProyectoTienda {
 /*
 
 Hacer que cuando se abra y cierre caja cambie de dia
-No permitir menos de 0 lps en caja
-
-Permitir doubles en cantidad de producto
-Permitir restar dinero de caja
-Seleccionar reportes aunque no se hayan hecho compras o ventas (Si se puede)
-Hacer mas compras y ventas despues de haber seleccionado reportes (Si se puede)
 Crash de letras donde van numeros
+Quitar los strings de productos
+Si no se vende todo el stock sigue el otro dia = no se resetean
+Poner cuanto stock queda al lado del menu
 
 Agregar comentarios
 
--Opcional: poner xuanto stock queda al lado del menu
+-Opcional: 
+Poner cuanto stock queda al lado del menu
+Permitir doubles en cantidad de producto
+Permitir restar dinero de caja
 */
 
 
@@ -1021,4 +1163,8 @@ Agregar comentarios
 -No permitir la compra si no hay suficiente dinero en caja
 -No permitir ventas si no hay suficiente stock
 -Hacer que sume el stock por cada compra que yo haga
+-No permitir menos de 0 lps en caja
+-Hacer mas compras y ventas despues de haber seleccionado reportes (Si se puede)
+-Seleccionar reportes aunque no se hayan hecho compras o ventas (Si se puede)
+-Impuestos en compras
 */
