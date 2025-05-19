@@ -172,7 +172,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
 
 
                             do{
-                                System.out.print("Ingrese cantidad de producto(kg): ");
+                                System.out.print("Ingrese cantidad de producto(número entero)(kg): ");
                                 cantProd = input.nextInt();
 
                                 if(cantProd<0){
@@ -351,7 +351,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
 
                                 do{
 
-                                    System.out.print("Ingrese cantidad de producto(kg): ");
+                                    System.out.print("Ingrese cantidad de producto(número entero)(kg): ");
                                     cantProd = input.nextInt();
 
                                     if(cantProd<0){
@@ -520,7 +520,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
 
                                 do{
 
-                                    System.out.print("Ingrese cantidad de producto(kg): ");
+                                    System.out.print("Ingrese cantidad de producto(número entero)(kg): ");
                                     cantProd = input.nextInt();
 
                                     if(cantProd<0){
@@ -670,7 +670,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         }else if(codigoProd==1 || codigoProd==4){
 
                             do{
-                                System.out.print("Ingrese cantidad de producto(kg): ");
+                                System.out.print("Ingrese cantidad de producto(número entero)(kg): ");
                                 cantProd = input.nextInt();
 
                                 if(cantProd<=0){
@@ -785,7 +785,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         }else if(codigoProd==2 || codigoProd==3){
 
                             do{
-                                System.out.print("Ingrese cantidad de producto(kg): ");
+                                System.out.print("Ingrese cantidad de producto(número entero)(kg): ");
                                 cantProd = input.nextInt();
 
                                 if(cantProd<=0){
@@ -901,7 +901,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                         }else if(codigoProd==2){
 
                             do{
-                                System.out.print("Ingrese cantidad de producto(kg): ");
+                                System.out.print("Ingrese cantidad de producto(número entero)(kg): ");
                                 cantProd = input.nextInt();
 
                                 if(cantProd<=0){
