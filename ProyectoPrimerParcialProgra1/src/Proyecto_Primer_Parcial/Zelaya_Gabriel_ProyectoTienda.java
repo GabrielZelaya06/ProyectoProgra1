@@ -839,6 +839,11 @@ public class Zelaya_Gabriel_ProyectoTienda {
 
                                 volumenCompras += totalPagar;
                                 contadorCompras ++;
+                                
+                                if(totalPagar > mayorCompra){
+
+                                    mayorCompra = totalPagar;
+                                }
 
                                 if(codigoProd==2){
 
@@ -942,9 +947,14 @@ public class Zelaya_Gabriel_ProyectoTienda {
                                 System.out.println("                   GRACIAS POR SU COMPRA                   ");
                                 System.out.println("-----------------------------------------------------------");
                                 System.out.println("");
-
+                               
                                 volumenCompras += totalPagar;
                                 contadorCompras ++;
+                                
+                                if(totalPagar > mayorCompra){
+
+                                    mayorCompra = totalPagar;
+                                }
 
                                 stockAvena += cantProd;
                                 System.out.println("Stock actual de Avena: "+stockAvena);
