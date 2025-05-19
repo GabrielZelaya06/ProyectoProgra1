@@ -1103,8 +1103,8 @@ public class Zelaya_Gabriel_ProyectoTienda {
 
                     }
 
-                    caja_tienda -= deposito;
-                    depositoBanco += deposito;
+                    caja_tienda -= deposito;//resta el deposito de caja
+                    depositoBanco += deposito;//suma el depostio a depositoBanco
 
                     System.out.println("");
                     System.out.println("Se han depositado Lps."+deposito+" en el banco");
