@@ -693,8 +693,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                                 break;
                             }
 
-                            double impuesto=subtotal*0.07;
-                            double totalPagar=subtotal+impuesto;
+                            double totalPagar=subtotal;
 
                             if(totalPagar>caja_tienda){
 
@@ -715,7 +714,6 @@ public class Zelaya_Gabriel_ProyectoTienda {
                                 System.out.println(detallesCompra);
                                 System.out.println("-----------------------------------------------------------");
                                 System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
-                                System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
                                 System.out.println("-----------------------------------------------------------");
                                 System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
                                 System.out.println("-----------------------------------------------------------");
@@ -808,8 +806,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                                 break;
                             }
 
-                            double impuesto=subtotal*0.07;
-                            double totalPagar=subtotal+impuesto;
+                            double totalPagar=subtotal;
 
                             if(totalPagar>caja_tienda){
 
@@ -829,7 +826,6 @@ public class Zelaya_Gabriel_ProyectoTienda {
                                 System.out.println(detallesCompra);
                                 System.out.println("-----------------------------------------------------------");
                                 System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
-                                System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
                                 System.out.println("-----------------------------------------------------------");
                                 System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
                                 System.out.println("-----------------------------------------------------------");
@@ -919,8 +915,7 @@ public class Zelaya_Gabriel_ProyectoTienda {
                                 break;
                             }
 
-                            double impuesto=subtotal*0.07;
-                            double totalPagar=subtotal+impuesto;
+                            double totalPagar=subtotal;
 
                             if(totalPagar>caja_tienda){
 
@@ -940,7 +935,6 @@ public class Zelaya_Gabriel_ProyectoTienda {
                                 System.out.println(detallesCompra);
                                 System.out.println("-----------------------------------------------------------");
                                 System.out.println("Subtotal:                                       Lps."+df.format(subtotal));
-                                System.out.println("Impuesto (7%):                                  Lps."+df.format(impuesto));
                                 System.out.println("-----------------------------------------------------------");
                                 System.out.println("TOTAL A PAGAR:                                  Lps."+df.format(totalPagar));
                                 System.out.println("-----------------------------------------------------------");
